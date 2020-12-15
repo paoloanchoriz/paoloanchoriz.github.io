@@ -14,10 +14,15 @@
 		id="textArea"
 		style="height:500px;width:500px"
 		></textarea> <br/>
-	<button id="check">CHECK</button>
+	<button id="check">CHECK</button><button id="clear">CLEAR</button>
 
-
+	<label>KEYWORD COUNT:</label> <span id="keywords"></span>
 	<script type="text/javascript">
+		document.getElementById("check").onclick = () => {
+			document.getElementById("textArea").value = ''
+			document.getElementById("keywords").innerHTML = '0'
+		}
+
 		document.getElementById("check").onclick = () => {
 			const textToCheck = document.getElementById("textArea").value
 
@@ -35,6 +40,7 @@
 				lookup[text] = 1
 				newSeries.push(text)
 			}
+			document.getElementById("keywords").innerHTML = newSeries.length
 
 			document.getElementById("textArea").value = newSeries.join(',')
 		}
