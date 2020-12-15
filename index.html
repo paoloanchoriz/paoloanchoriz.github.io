@@ -1,8 +1,43 @@
 <html>
 <head>
+
+
 </head>
 <body>
+	<label>
+		Lagay lang dito ang keywords, Pag hiwalayin gamit ang comma (,) </br>
+		Pag tapos na, click check, aalisin nya ang lahat ng duplicate at tatanggalin ang extra spaces.</br>
+		Copy paste at gamitin :)
+	<label><br/>
 
-	HELLO WORLD
+	<textarea
+		id="textArea"
+		style="height:500px;width:500px"
+		></textarea> <br/>
+	<button id="check">CHECK</button>
+
+
+	<script type="text/javascript">
+		document.getElementById("check").onclick = () => {
+			const textToCheck = document.getElementById("textArea").value
+
+			if(!textToCheck) alert("Fill Up Text Area To Continue!")
+
+			const splitTexts = textToCheck.split(",")
+			const lookup = { }
+			const newSeries = []
+			for (let i = 0; i < splitTexts.length; i++) {
+				let text = splitTexts[i]
+
+				text = text.replace(/\s+/g,' ').replace(/^\s+|\s+$/,'').trim().toLowerCase()
+				if(lookup[text]) continue
+
+				lookup[text] = 1
+				newSeries.push(text)
+			}
+
+			document.getElementById("textArea").value = newSeries.join(',')
+		}
+	</script>
 </body>
 </html>
